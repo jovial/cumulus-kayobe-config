@@ -45,7 +45,7 @@ external_net_names:
 
 # Name of the network used to expose the public OpenStack API endpoints.
 #public_net_name:
-public_net_name: aio
+public_net_name: pub
 
 # Name of the network used by Neutron to carry tenant overlay network traffic.
 #tunnel_net_name:
@@ -81,6 +81,9 @@ aio_neutron_allocation_pool_end: 192.168.33.127
 aio_inspection_allocation_pool_start: 192.168.33.128
 aio_inspection_allocation_pool_end: 192.168.33.254
 aio_vip_address: 192.168.33.2
+
+pub_cidr: 192.168.0.0/24
+pub_vip_address: 192.168.0.112
 
 ###############################################################################
 # Network virtual patch link configuration.
