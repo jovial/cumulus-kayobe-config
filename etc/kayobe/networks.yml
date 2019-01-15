@@ -83,7 +83,7 @@ aio_inspection_allocation_pool_end: 192.168.33.254
 aio_vip_address: 192.168.33.2
 
 pub_cidr: 192.168.0.0/24
-pub_vip_address: 192.168.0.112
+pub_vip_address: 192.168.0.107
 
 ###############################################################################
 # Network virtual patch link configuration.
