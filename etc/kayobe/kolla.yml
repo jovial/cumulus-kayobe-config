@@ -195,8 +195,8 @@
 #kolla_enable_iscsid:
 #kolla_enable_karbor:
 #kolla_enable_kuryr:
-#kolla_enable_magnum:
-#kolla_enable_manila:
+kolla_enable_magnum: yes
+#kolla_enable_manila: yes
 #kolla_enable_manila_backend_generic:
 #kolla_enable_manila_backend_hnas:
 #kolla_enable_manila_backend_cephfs_native:
