@@ -167,7 +167,7 @@ kolla_build_customizations:
 #kolla_ansible_target_venv:
 
 # Whether TLS is enabled for the external API endpoints.
-#kolla_enable_tls_external:
+kolla_enable_tls_external: True
 
 # Whether debug logging is enabled.
 #kolla_openstack_logging_debug:
@@ -234,7 +234,7 @@ kolla_enable_manila_backend_cephfs_nfs: True
 #kolla_enable_mongodb:
 #kolla_enable_multipathd:
 #kolla_enable_murano:
-#kolla_enable_neutron_agent_ha:
+kolla_enable_neutron_agent_ha: True
 #kolla_enable_neutron_bgp_dragent:
 #kolla_enable_neutron_dvr:
 #kolla_enable_neutron_fwaas:
@@ -287,7 +287,8 @@ kolla_enable_prometheus: True
 # use by HAproxy.
 #
 # Note that this should be formatted as a literal style block scalar.
-#kolla_tls_cert:
+kolla_tls_cert: /etc/kolla/certificates/haproxy.pem
+kolla_external_fqdn_cacert: /etc/kolla/certificates/haproxy-ca.crt
 
 ###############################################################################
 # Dummy variable to allow Ansible to accept this file.

@@ -139,7 +139,7 @@ external_net_allocation_pool_end: "10.{{ external_net_vlan }}.3.255"
 # external_net_routes:
 
 # Public network IP information.
-#public_net_fqdn: cumulus.hpc.cam.ac.uk
+public_net_fqdn: cumulus.hpc.cam.ac.uk
 public_net_vlan: 215
 public_net_vip_address: "10.{{ public_net_vlan }}.0.1"
 public_net_cidr: "10.{{ public_net_vlan }}.0.0/16"
