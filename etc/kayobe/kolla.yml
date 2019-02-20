@@ -167,8 +167,7 @@ kolla_build_customizations:
 #kolla_ansible_target_venv:
 
 # Whether TLS is enabled for the external API endpoints.
-kolla_enable_tls_external: True
-
+#kolla_enable_tls_external:
 # Whether debug logging is enabled.
 #kolla_openstack_logging_debug:
 
@@ -287,9 +286,9 @@ kolla_enable_prometheus: True
 # use by HAproxy.
 #
 # Note that this should be formatted as a literal style block scalar.
-kolla_external_fqdn_cacert: /etc/kolla/certificates/haproxy-ca.crt
+old_kolla_external_fqdn_cacert: /etc/kolla/certificates/haproxy-ca.crt
 
-kolla_tls_cert: !vault |
+old_kolla_tls_cert: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           33316437626433343163623335303430636566373830663238616532346564343036616136326461
           6264313535333062323131646162383337613238303936340a626338653137646662613935636139
