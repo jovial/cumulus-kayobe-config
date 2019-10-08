@@ -1,0 +1,55 @@
+---
+
+- name: deploy ipmi-exporter
+  # monitoring hosts don't have access to IPMI
+  hosts: ctrl1
+  vars:
+    ipmi_exporter_config: files/ipmi-exporter-config.yml
+    ipmi_exporter_image: ipmi-exporter
+    ansible_become: true
+  tasks:
+    - name: build ipmi-exporter
+      vars:
+        ipmi_exporter_action: build
+      include_role:
+        name: stackhpc.ipmi-exporter
+    - name: deploy ipmi-exporter 
+      include_role:
+        name: stackhpc.ipmi-exporter
+
+- name: configure prometheus config in kayobe tree
+  hosts: localhost
+  vars:
+    prometheus_config_path: "{{ lookup('env','KAYOBE_CONFIG_PATH') }}/kolla/config/prometheus"
+    file_sd_path: "{{ prometheus_config_path }}/file_sd"
+    prometheus_d_path: "{{ prometheus_config_path }}/prometheus.yml.d"
+  tasks:
+    - name: create prometheus directories within kayobe config
+      file:
+        path: "{{ item }}"
+        state: directory
+        recurse: true
+      with_items:
+        - "{{ prometheus_config_path }}"
+        - "{{ file_sd_path }}"
+        - "{{ prometheus_d_path }}"
+
+    - name: template ipmi-exporter-targets.yml
+      template:
+        src: files/prometheus/file_sd/ipmi-exporter-targets.yml.j2
+        dest: "{{ file_sd_path }}/ipmi-exporter-targets.yml"
+      notify: reconfigure prometheus
+
+    - name: template prometheus.cfg overrides
+      template:
+        src: files/prometheus/prometheus.yml.d/ipmi-exporter.yml
+        dest: "{{ prometheus_d_path }}/ipmi-exporter.yml"
+      notify: reconfigure prometheus
+
+  handlers:
+    # TODO: actually reconfigure prometheus?
+    # i.e kayobe service reconfigure -kt prometheus --kolla-skip-tags common
+    # BUG: if this playbook is run twice you will only be warned on first run
+    - name: reconfigure prometheus
+      debug:
+        msg: "You need to reconfigure prometheus"

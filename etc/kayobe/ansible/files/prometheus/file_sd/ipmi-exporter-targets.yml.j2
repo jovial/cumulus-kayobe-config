@@ -1,0 +1,7 @@
+---
+- targets:
+{% for host in groups['all'] if hostvars[host].ipmi_address %}
+  - {{ hostvars[host].ipmi_address }}  # {{ host }}
+{% endfor %}
+  labels:
+    job: ipmi_exporter

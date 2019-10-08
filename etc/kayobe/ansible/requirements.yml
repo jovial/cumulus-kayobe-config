@@ -1,4 +1,5 @@
 - src: https://github.com/stackhpc/ansible-role-firewallgen
   version: master
   name: stackhpc.firewallgen
-
+- src: https://github.com/stackhpc/stackhpc.ipmi-exporter
+  name: stackhpc.ipmi-exporter
