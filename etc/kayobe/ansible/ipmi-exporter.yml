@@ -2,7 +2,7 @@
 
 - name: deploy ipmi-exporter
   # monitoring hosts don't have access to IPMI
-  hosts: ctrl1
+  hosts: ipmi_exporter
   vars:
     ipmi_exporter_config: files/ipmi-exporter-config.yml
     ipmi_exporter_image: ipmi-exporter

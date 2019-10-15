@@ -27,5 +27,5 @@ scape_targets:
     - separator: ;
       regex: .*
       target_label: __address__
-      replacement: "{{ internal_net_name | net_ip('ctrl1') }}:9290"
+      replacement: "{{ internal_net_name | net_ip(groups['ipmi_exporter'][0]) }}:9290"
       action: replace
