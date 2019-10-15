@@ -21,7 +21,7 @@
   hosts: localhost
   vars:
     prometheus_config_path: "{{ lookup('env','KAYOBE_CONFIG_PATH') }}/kolla/config/prometheus"
-    file_sd_path: "{{ prometheus_config_path }}/file_sd"
+    file_sd_path: "{{ prometheus_config_path }}/extras/file_sd"
     prometheus_d_path: "{{ prometheus_config_path }}/prometheus.yml.d"
   tasks:
     - name: create prometheus directories within kayobe config
