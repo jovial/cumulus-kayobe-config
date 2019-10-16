@@ -1,0 +1,7 @@
+---
+- targets:
+  - 10.202.0.30  # cpu-e-1041
+  - 10.202.0.31  # cpu-e-1042
+  - 10.202.0.32  # cpu-e-1043
+  labels:
+    job: ipmi_exporter
