@@ -1,15 +1,15 @@
 ---
-scape_targets:
+scrape_configs:
   - job_name: ipmi
     params:
-      module: default
+      module: ["default"]
     scrape_interval: 1m
     scrape_timeout: 30s
     metrics_path: /ipmi
     scheme: http
     file_sd_configs:
     - files:
-      - /etc/prometheus/file_sd/ipmi-exporter-targets.yml
+      - /etc/prometheus/extras/file_sd/ipmi-exporter-targets.yml
       refresh_interval: 5m
     relabel_configs:
     - source_labels: [__address__]

@@ -9,7 +9,7 @@ scrape_configs:
     scheme: http
     file_sd_configs:
     - files:
-      - /etc/prometheus/file_sd/ipmi-exporter-targets.yml
+      - /etc/prometheus/extras/file_sd/ipmi-exporter-targets.yml
       refresh_interval: 5m
     relabel_configs:
     - source_labels: [__address__]
@@ -27,5 +27,5 @@ scrape_configs:
     - separator: ;
       regex: .*
       target_label: __address__
-      replacement: "{{ internal_net_name | net_ip(groups['ipmi_exporter'][0]) }}:9290"
+      replacement: "{{ ipmi_exporter_listen_address }}:9290"
       action: replace

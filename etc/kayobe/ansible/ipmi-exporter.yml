@@ -6,6 +6,7 @@
   vars:
     ipmi_exporter_config: files/ipmi-exporter-config.yml
     ipmi_exporter_image: ipmi-exporter
+    ipmi_exporter_listen_address: "{{ internal_net_name | net_ip(groups['ipmi_exporter'][0]) }}"
     ansible_become: true
   tasks:
     - name: build ipmi-exporter
@@ -23,6 +24,7 @@
     prometheus_config_path: "{{ lookup('env','KAYOBE_CONFIG_PATH') }}/kolla/config/prometheus"
     file_sd_path: "{{ prometheus_config_path }}/extras/file_sd"
     prometheus_d_path: "{{ prometheus_config_path }}/prometheus.yml.d"
+    ipmi_exporter_listen_address: "{{ internal_net_name | net_ip(groups['ipmi_exporter'][0]) }}"
   tasks:
     - name: create prometheus directories within kayobe config
       file:
