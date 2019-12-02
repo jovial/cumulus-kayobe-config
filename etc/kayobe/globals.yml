@@ -11,7 +11,7 @@
 # Remote path configuration (seed, seed-hypervisor and overcloud hosts).
 
 # Base path for kayobe state on remote hosts.
-#base_path:
+base_path: "{{ ansible_env.HOME/.kayobe }}"
 
 # Path in which to cache downloaded images on remote hosts.
 #image_cache_path:
